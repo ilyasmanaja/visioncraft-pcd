@@ -24,7 +24,7 @@
     <header class="bg-[#2b2d31] border-b border-[#3f4248] px-4 py-2 flex flex-col gap-2 relative z-50">
         <div class="flex items-center justify-between text-xs text-gray-400">
             <span class="font-bold text-gray-200 tracking-wide">VisionCraft PCD Web Studio</span>
-            <span>VisionCraft PCD — Copyright © Muhammad Raihan Ilyasman – 2026</span>
+            <span>VisionCraft PCD — Copyright © Raihan, Gita, Kenhairani – 2026</span>
         </div>
 
         <!-- Horizontal Menu Navigation -->
@@ -57,8 +57,8 @@
                     Ops</button>
                 <div class="menu-content hidden absolute left-0 top-full pt-1 w-52 shadow-2xl">
                     <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Negative</button>
+                        <button data-op="basic.negative"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Negative</button>
 
                         <!-- Submenu: Arithmetic -->
                         <div class="relative submenu-item">
@@ -68,17 +68,17 @@
                             </div>
                             <div class="submenu-content hidden absolute left-full top-0 pl-1 w-44">
                                 <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Add
+                                    <button data-op="basic.arithmetic.add"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Add
                                         (+)</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Subtract
+                                    <button data-op="basic.arithmetic.subtract"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Subtract
                                         (−)</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Multiply
+                                    <button data-op="basic.arithmetic.multiply"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Multiply
                                         (*)</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Divide
+                                    <button data-op="basic.arithmetic.divide"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Divide
                                         (/)</button>
                                 </div>
                             </div>
@@ -92,14 +92,14 @@
                             </div>
                             <div class="submenu-content hidden absolute left-full top-0 pl-1 w-40">
                                 <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">NOT</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">AND</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">OR</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">XOR</button>
+                                    <button data-op="basic.boolean.not"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">NOT</button>
+                                    <button data-op="basic.boolean.and"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">AND</button>
+                                    <button data-op="basic.boolean.or"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">OR</button>
+                                    <button data-op="basic.boolean.xor"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">XOR</button>
                                 </div>
                             </div>
                         </div>
@@ -112,26 +112,26 @@
                             </div>
                             <div class="submenu-content hidden absolute left-full top-0 pl-1 w-44">
                                 <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Translation</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Rotation</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Zooming</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Flipping</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Cropping</button>
+                                    <button data-op="basic.geometrics.translation"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Translation</button>
+                                    <button data-op="basic.geometrics.rotation"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Rotation</button>
+                                    <button data-op="basic.geometrics.zooming"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Zooming</button>
+                                    <button data-op="basic.geometrics.flipping"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Flipping</button>
+                                    <button data-op="basic.geometrics.cropping"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Cropping</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Thresholding</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Convolution</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Fourier
+                        <button data-op="basic.thresholding"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Thresholding</button>
+                        <button data-op="basic.convolution"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Convolution</button>
+                        <button data-op="basic.fourier"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Fourier
                             Transform</button>
 
                         <!-- Submenu: Colouring -->
@@ -142,22 +142,22 @@
                             </div>
                             <div class="submenu-content hidden absolute left-full top-0 pl-1 w-40">
                                 <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Binary</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Grayscale</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">RGB</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">HSV</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">CMY</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">YUV</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">YIQ</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Pseudo</button>
+                                    <button data-op="basic.colouring.binary"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Binary</button>
+                                    <button data-op="basic.colouring.gray"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Grayscale</button>
+                                    <button data-op="basic.colouring.rgb"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">RGB</button>
+                                    <button data-op="basic.colouring.hsv"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">HSV</button>
+                                    <button data-op="basic.colouring.cmy"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">CMY</button>
+                                    <button data-op="basic.colouring.yuv"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">YUV</button>
+                                    <button data-op="basic.colouring.yiq"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">YIQ</button>
+                                    <button data-op="basic.colouring.pseudo"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Pseudo</button>
                                 </div>
                             </div>
                         </div>
@@ -415,14 +415,102 @@
             <div>
                 <h3 class="text-sm font-semibold border-b border-[#3f4248] pb-2 mb-4 text-gray-200">Panel Parameter</h3>
                 <div id="dynamic-params" class="text-xs text-gray-400 space-y-4">
-                    <p>Pilih operasi dari menu bar di atas untuk menampilkan kontrol pengaturan.</p>
+                    <p id="param-empty">Pilih operasi dari menu bar di atas untuk menampilkan kontrol pengaturan.</p>
+
+                    <!-- Slider Khusus Thresholding & Binary -->
+                    <div id="param-threshold-box" class="hidden flex flex-col gap-3">
+                        <label class="font-medium text-gray-200">Nilai Threshold: <span id="thresh-val-label"
+                                class="text-blue-400 font-bold">128</span></label>
+                        <input type="range" id="thresh-slider" min="0" max="255" value="128"
+                            class="w-full cursor-pointer accent-blue-500">
+                    </div>
+
+                    <!-- Kontrol Khusus Geometrics -->
+                    <div id="param-geom-box" class="hidden flex flex-col gap-3">
+                        <!-- Kontrol Translation -->
+                        <div id="geom-ctrl-trans" class="geom-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Geser X (px): <span id="label-tx"
+                                    class="text-blue-400 font-bold">50</span></label>
+                            <input type="range" id="param-tx" min="-200" max="200" value="50"
+                                class="w-full cursor-pointer accent-blue-500">
+
+                            <label class="text-gray-300">Geser Y (px): <span id="label-ty"
+                                    class="text-blue-400 font-bold">50</span></label>
+                            <input type="range" id="param-ty" min="-200" max="200" value="50"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Kontrol Rotation -->
+                        <div id="geom-ctrl-rot" class="geom-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Sudut Putar (°): <span id="label-rot"
+                                    class="text-blue-400 font-bold">90</span></label>
+                            <input type="range" id="param-rot" min="-180" max="180" value="90" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Kontrol Zooming -->
+                        <div id="geom-ctrl-zoom" class="geom-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Skala Zoom: <span id="label-zoom"
+                                    class="text-blue-400 font-bold">1.5x</span></label>
+                            <input type="range" id="param-zoom" min="0.2" max="3.0" value="1.5" step="0.1"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Kontrol Flipping -->
+                        <div id="geom-ctrl-flip" class="geom-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Arah Balik:</label>
+                            <select id="param-flip-mode"
+                                class="bg-[#1e1f22] border border-[#3f4248] rounded px-2 py-1 text-gray-200 focus:outline-none focus:border-blue-500">
+                                <option value="horizontal">Horizontal (Kiri-Kanan)</option>
+                                <option value="vertical">Vertical (Atas-Bawah)</option>
+                                <option value="both">Keduanya (Horizontal + Vertical)</option>
+                            </select>
+                        </div>
+
+                        <!-- Kontrol Cropping -->
+                        <div id="geom-ctrl-crop" class="geom-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Lebar Potong (W px):</label>
+                            <input type="number" id="param-crop-w" value="250" min="10"
+                                class="bg-[#1e1f22] border border-[#3f4248] rounded px-2 py-1 text-gray-200 focus:outline-none focus:border-blue-500">
+
+                            <label class="text-gray-300">Tinggi Potong (H px):</label>
+                            <input type="number" id="param-crop-h" value="250" min="10"
+                                class="bg-[#1e1f22] border border-[#3f4248] rounded px-2 py-1 text-gray-200 focus:outline-none focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Panel Input Gambar Kedua (Khusus Arithmetic & Boolean) -->
+                    <div id="param-dual-box" class="hidden flex flex-col gap-3">
+                        <label class="font-medium text-gray-200">Muat Gambar Kedua (B):</label>
+                        <input type="file" id="file-input-2" accept="image/*"
+                            class="text-xs text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
+                        <div id="img2-preview-box"
+                            class="hidden border border-[#3f4248] rounded p-1 bg-[#1e1f22] flex items-center justify-center h-28 overflow-hidden">
+                            <img id="img2-preview" class="max-h-full object-contain">
+                        </div>
+                    </div>
+
+                    <!-- Kontrol Khusus Convolution -->
+                    <div id="param-conv-box" class="hidden flex flex-col gap-3">
+                        <label class="font-medium text-gray-200">Pilih Kernel Konvolusi:</label>
+                        <select id="param-conv-kernel"
+                            class="bg-[#1e1f22] border border-[#3f4248] rounded px-2 py-1.5 text-gray-200 focus:outline-none focus:border-blue-500">
+                            <option value="sharpen">Sharpen (Penajaman)</option>
+                            <option value="blur">Box Blur (Penghalusan 3x3)</option>
+                            <option value="gaussian">Gaussian Filter</option>
+                            <option value="ridge">Ridge Detection (Deteksi Tepi)</option>
+                            <option value="identity">Identity (Asli)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+
             <div class="border-t border-[#3f4248] pt-3 flex gap-2">
-                <button class="flex-1 bg-gray-600 hover:bg-gray-500 text-white text-xs font-medium py-2 rounded">Reset
+                <button id="btn-reset-param"
+                    class="flex-1 bg-gray-600 hover:bg-gray-500 text-white text-xs font-medium py-2 rounded transition">Reset
                     Param</button>
-                <button
-                    class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium py-2 rounded">Apply</button>
+                <button type="button" id="btn-apply"
+                    class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium py-2 rounded transition">Apply</button>
             </div>
         </aside>
     </main>
@@ -462,11 +550,43 @@
     <!-- Script Minimal File Loader Preview -->
     <script>
         const fileInput = document.getElementById('file-input');
+        const canvasProc = document.getElementById('canvas-proc');
+        const ctxProc = canvasProc.getContext('2d'); // <-- TAMBAHKAN BARIS INI
+        const procPlaceholder = document.getElementById('proc-placeholder');
+        const procStatus = document.getElementById('proc-status');
         const dropArea = document.getElementById('drop-area');
         const canvasOrig = document.getElementById('canvas-orig');
         const ctxOrig = canvasOrig.getContext('2d');
         const placeholder = document.getElementById('orig-placeholder');
         let isAnyMenuOpen = false;
+        let activeOp = null;
+        const paramEmpty = document.getElementById('param-empty');
+        const paramThreshBox = document.getElementById('param-threshold-box');
+        const threshSlider = document.getElementById('thresh-slider');
+        const threshValLabel = document.getElementById('thresh-val-label');
+        const btnApply = document.getElementById('btn-apply');
+        const btnResetParam = document.getElementById('btn-reset-param');
+        const paramGeomBox = document.getElementById('param-geom-box');
+        const paramDualBox = document.getElementById('param-dual-box');
+        const fileInput2 = document.getElementById('file-input-2');
+        const img2PreviewBox = document.getElementById('img2-preview-box');
+        const img2Preview = document.getElementById('img2-preview');
+        let image2Base64 = null;
+        const paramConvBox = document.getElementById('param-conv-box');
+        const convKernelSelect = document.getElementById('param-conv-kernel');
+
+        // Helper update teks slider geometris
+        const bindSliderText = (sliderId, labelId, suffix = '') => {
+            const sl = document.getElementById(sliderId);
+            const lb = document.getElementById(labelId);
+            if (sl && lb) {
+                sl.addEventListener('input', (e) => { lb.innerText = e.target.value + suffix; });
+            }
+        };
+        bindSliderText('param-tx', 'label-tx');
+        bindSliderText('param-ty', 'label-ty');
+        bindSliderText('param-rot', 'label-rot');
+        bindSliderText('param-zoom', 'label-zoom', 'x');
 
         // --- 1. LOGIKA FILE LOADER & DRAG-AND-DROP ---
         function handleImageFile(file) {
@@ -494,6 +614,20 @@
                 img.src = event.target.result;
             };
             reader.readAsDataURL(file);
+        }
+
+        if (fileInput2) {
+            fileInput2.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    image2Base64 = ev.target.result;
+                    img2Preview.src = image2Base64;
+                    img2PreviewBox.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            });
         }
 
         // Input via dialog (File -> Open...)
@@ -592,6 +726,188 @@
                 closeAllMenus();
             }
         });
+
+        async function executeOperation(operationName, params = {}, img2Data = null) {
+            if (canvasOrig.classList.contains('hidden')) {
+                alert('Silakan muat gambar terlebih dahulu melalui menu File -> Open atau drag-and-drop!');
+                return;
+            }
+
+            procStatus.innerText = 'Memproses citra...';
+            closeAllMenus();
+
+            try {
+                const base64Data = canvasOrig.toDataURL('image/png');
+                const payload = {
+                    operation: operationName,
+                    image: base64Data,
+                    params: params
+                };
+
+                if (img2Data) {
+                    payload.image2 = img2Data;
+                }
+
+                const response = await fetch('/api/process', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (!result.ok) throw new Error(result.message || 'Gagal memproses gambar');
+
+                const procImg = new Image();
+                procImg.onload = function () {
+                    canvasProc.width = procImg.width;
+                    canvasProc.height = procImg.height;
+                    ctxProc.drawImage(procImg, 0, 0);
+
+                    canvasProc.classList.remove('hidden');
+                    procPlaceholder.classList.add('hidden');
+                    procStatus.innerText = 'Selesai';
+                };
+                procImg.src = result.image;
+
+            } catch (err) {
+                console.error(err);
+                alert(`Error: ${err.message}`);
+                procStatus.innerText = 'Gagal';
+            }
+        }
+
+        // Update teks angka saat slider digeser
+        if (threshSlider) {
+            threshSlider.addEventListener('input', (e) => {
+                threshValLabel.innerText = e.target.value;
+            });
+        }
+
+        // Reset slider
+        if (btnResetParam) {
+            btnResetParam.addEventListener('click', () => {
+                if (threshSlider) {
+                    threshSlider.value = 128;
+                    threshValLabel.innerText = '128';
+                }
+            });
+        }
+
+        // Definisi operasi yang membutuhkan 2 gambar
+        const isDualImageOp = (op) => {
+            if (!op) return false;
+            return op.startsWith('basic.arithmetic.') ||
+                ['basic.boolean.and', 'basic.boolean.or', 'basic.boolean.xor'].includes(op);
+        };
+
+        // Listener dinamis untuk seluruh tombol operasi yang memiliki class 'op-btn'
+        document.querySelectorAll('.op-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const op = btn.getAttribute('data-op');
+                activeOp = op;
+                hideAllParamBoxes();
+                closeAllMenus();
+
+                if (op === 'basic.thresholding' || op === 'basic.colouring.binary') {
+                    paramThreshBox.classList.remove('hidden');
+                    executeOperation(op, { threshold: parseInt(threshSlider.value) });
+                }
+                else if (op.startsWith('basic.geometrics.')) {
+                    paramGeomBox.classList.remove('hidden');
+                    if (op.endsWith('.translation')) document.getElementById('geom-ctrl-trans').classList.remove('hidden');
+                    if (op.endsWith('.rotation')) document.getElementById('geom-ctrl-rot').classList.remove('hidden');
+                    if (op.endsWith('.zooming')) document.getElementById('geom-ctrl-zoom').classList.remove('hidden');
+                    if (op.endsWith('.flipping')) document.getElementById('geom-ctrl-flip').classList.remove('hidden');
+                    if (op.endsWith('.cropping')) document.getElementById('geom-ctrl-crop').classList.remove('hidden');
+
+                    triggerCurrentOp();
+                }
+                else if (isDualImageOp(op)) {
+                    paramDualBox.classList.remove('hidden');
+                    if (image2Base64) {
+                        triggerCurrentOp();
+                    } else {
+                        paramEmpty.classList.remove('hidden');
+                        paramEmpty.innerText = `Operasi ${btn.innerText.trim()}: Silakan pilih Gambar Kedua (B) di bawah, lalu klik Apply.`;
+                    }
+                }
+                else if (op === 'basic.convolution') {
+                    paramConvBox.classList.remove('hidden');
+                    executeOperation(op, { kernel: convKernelSelect.value });
+                }
+                else {
+                    paramEmpty.classList.remove('hidden');
+                    paramEmpty.innerText = `Operasi aktif: ${btn.innerText.trim()}`;
+                    executeOperation(op);
+                }
+            });
+        });
+
+        function triggerCurrentOp() {
+            if (!activeOp) return;
+
+            let params = {};
+            if (activeOp === 'basic.thresholding' || activeOp === 'basic.colouring.binary') {
+                params.threshold = parseInt(threshSlider.value);
+                executeOperation(activeOp, params);
+            }
+            else if (activeOp.startsWith('basic.geometrics.')) {
+                params = getGeomParams();
+                executeOperation(activeOp, params);
+            }
+            else if (isDualImageOp(activeOp)) {
+                if (!image2Base64) {
+                    alert('Harap unggah gambar kedua (B) terlebih dahulu di Panel Parameter!');
+                    return;
+                }
+                executeOperation(activeOp, {}, image2Base64);
+            }
+            else if (activeOp === 'basic.convolution') {
+                executeOperation(activeOp, { kernel: convKernelSelect.value });
+            }
+            else {
+                executeOperation(activeOp);
+            }
+        }
+
+        if (btnApply) {
+            btnApply.addEventListener('click', (e) => {
+                e.preventDefault(); // Mencegah reload atau propagasi form tak sengaja
+                triggerCurrentOp();
+            });
+        }
+
+        function getGeomParams() {
+            if (activeOp.endsWith('.translation')) {
+                return {
+                    tx: parseInt(document.getElementById('param-tx').value) || 0,
+                    ty: parseInt(document.getElementById('param-ty').value) || 0
+                };
+            } else if (activeOp.endsWith('.rotation')) {
+                return { angle: parseFloat(document.getElementById('param-rot').value) || 0 };
+            } else if (activeOp.endsWith('.zooming')) {
+                return { scale: parseFloat(document.getElementById('param-zoom').value) || 1.0 };
+            } else if (activeOp.endsWith('.flipping')) {
+                return { mode: document.getElementById('param-flip-mode').value };
+            } else if (activeOp.endsWith('.cropping')) {
+                return {
+                    x: 0, y: 0,
+                    width: parseInt(document.getElementById('param-crop-w').value) || 200,
+                    height: parseInt(document.getElementById('param-crop-h').value) || 200
+                };
+            }
+            return {};
+        }
+
+        function hideAllParamBoxes() {
+            paramEmpty.classList.add('hidden');
+            paramThreshBox.classList.add('hidden');
+            if (paramGeomBox) paramGeomBox.classList.add('hidden');
+            if (paramDualBox) paramDualBox.classList.add('hidden');
+            if (paramConvBox) paramConvBox.classList.add('hidden');
+            document.querySelectorAll('.geom-subctrl').forEach(el => el.classList.add('hidden'));
+        }
+
     </script>
 </body>
 
