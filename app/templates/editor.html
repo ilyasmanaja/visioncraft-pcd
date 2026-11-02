@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionCraft PCD — Image Processing Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Nested dropdown hover support */
+        .group:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[#1e1f22] text-[#e5e7eb] h-screen flex flex-col font-sans select-none overflow-hidden">
+
+    <!-- Top App Bar & Menu Bar -->
+    <header class="bg-[#2b2d31] border-b border-[#3f4248] px-4 py-2 flex flex-col gap-2 relative z-50">
+        <div class="flex items-center justify-between text-xs text-gray-400">
+            <span class="font-bold text-gray-200 tracking-wide">VisionCraft PCD Web Studio</span>
+            <span>VisionCraft PCD — Copyright © Muhammad Raihan Ilyasman – 2026</span>
+        </div>
+
+        <!-- Horizontal Menu Navigation -->
+        <nav class="flex items-center space-x-1 text-sm font-medium">
+            <!-- 1. File Menu -->
+            <div class="relative menu-dropdown">
+                <button type="button"
+                    class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">File</button>
+                <div class="menu-content hidden absolute left-0 top-full pt-1 w-48 shadow-2xl">
+                    <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
+                        <label class="block px-4 py-2 hover:bg-[#3b82f6] hover:text-white cursor-pointer transition">
+                            Open... <input type="file" id="file-input" class="hidden" accept="image/*">
+                        </label>
+                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition"
+                            onclick="alert('Save fitur akan aktif di integrasi API')">Save</button>
+                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition"
+                            onclick="alert('Save As fitur')">Save As</button>
+                        <hr class="border-[#3f4248] my-1">
+                        <button
+                            class="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500 hover:text-white transition"
+                            onclick="location.reload()">Exit / Reset Canvas</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Basic Ops Menu -->
+            <div class="relative menu-dropdown">
+                <button type="button"
+                    class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">Basic
+                    Ops</button>
+                <div class="menu-content hidden absolute left-0 top-full pt-1 w-52 shadow-2xl">
+                    <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Negative</button>
+
+                        <!-- Submenu: Arithmetic -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>Arithmetic</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-44">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Add
+                                        (+)</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Subtract
+                                        (−)</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Multiply
+                                        (*)</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Divide
+                                        (/)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submenu: Boolean -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>Boolean</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-40">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">NOT</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">AND</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">OR</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">XOR</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submenu: Geometrics -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>Geometrics</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-44">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Translation</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Rotation</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Zooming</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Flipping</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Cropping</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Thresholding</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Convolution</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Fourier
+                            Transform</button>
+
+                        <!-- Submenu: Colouring -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>Colouring</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-40">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Binary</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Grayscale</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">RGB</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">HSV</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">CMY</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">YUV</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">YIQ</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Pseudo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Enhancement Menu -->
+            <div class="relative menu-dropdown">
+                <button type="button"
+                    class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">Enhancement</button>
+                <div class="menu-content hidden absolute left-0 top-full pt-1 w-56 shadow-2xl">
+                    <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Brightness</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Contrast</button>
+                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Hist.
+                            Equalization</button>
+
+                        <!-- Submenu: Smoothing (3 Levels) -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>Smoothing</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-48">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <!-- Spatial Domain -->
+                                    <div class="relative submenu-item">
+                                        <div
+                                            class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                            <span>Spatial Domain</span> <span>▸</span>
+                                        </div>
+                                        <div class="submenu-content hidden absolute left-full top-0 pl-1 w-44">
+                                            <div
+                                                class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Lowpass
+                                                    Filtering</button>
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Median
+                                                    Filtering</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Frequency Domain -->
+                                    <div class="relative submenu-item">
+                                        <div
+                                            class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                            <span>Frequency Domain</span> <span>▸</span>
+                                        </div>
+                                        <div class="submenu-content hidden absolute left-full top-0 pl-1 w-36">
+                                            <div
+                                                class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">ILPF</button>
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">BLPF</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submenu: Sharpening (3 Levels) -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>Sharpening</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-48">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <!-- Spatial Domain -->
+                                    <div class="relative submenu-item">
+                                        <div
+                                            class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                            <span>Spatial Domain</span> <span>▸</span>
+                                        </div>
+                                        <div class="submenu-content hidden absolute left-full top-0 pl-1 w-48">
+                                            <div
+                                                class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Highpass
+                                                    Filtering</button>
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Highboost
+                                                    Filtering</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Frequency Domain -->
+                                    <div class="relative submenu-item">
+                                        <div
+                                            class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                            <span>Frequency Domain</span> <span>▸</span>
+                                        </div>
+                                        <div class="submenu-content hidden absolute left-full top-0 pl-1 w-36">
+                                            <div
+                                                class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">IHPF</button>
+                                                <button
+                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">BHPF</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Geometrics
+                            correction</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Edge Detection Menu -->
+            <div class="relative menu-dropdown">
+                <button type="button"
+                    class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">Edge
+                    Detection</button>
+                <div class="menu-content hidden absolute left-0 top-full pt-1 w-56 shadow-2xl">
+                    <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
+                        <!-- 1st Differential Gradient -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>1'st Differential Gradient</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-36">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Sobel</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Prewitt</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Robert</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2nd Differential Gradient -->
+                        <div class="relative submenu-item">
+                            <div
+                                class="px-4 py-2 hover:bg-[#3b82f6] hover:text-white flex justify-between items-center cursor-pointer transition">
+                                <span>2'nd Differential Gradient</span> <span>▸</span>
+                            </div>
+                            <div class="submenu-content hidden absolute left-full top-0 pl-1 w-52">
+                                <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Laplacian</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Laplacian
+                                        of Gaussian (LoG)</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Canny</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Compass</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Noise Menu -->
+            <div class="relative menu-dropdown">
+                <button type="button"
+                    class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">Noise</button>
+                <div class="menu-content hidden absolute left-0 top-full pt-1 w-48 shadow-2xl">
+                    <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Gaussian
+                            Noise</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Rayleigh
+                            Noise</button>
+                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Erlang
+                            (Gamma) Noise</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Exponential
+                            Noise</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Uniform
+                            Noise</button>
+                        <button
+                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Impulse
+                            Noise</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. About Menu -->
+            <div class="relative menu-dropdown">
+                <button type="button"
+                    class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">About</button>
+                <div class="menu-content hidden absolute left-0 top-full pt-1 w-48 shadow-2xl">
+                    <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
+                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition"
+                            onclick="document.getElementById('modal-about').classList.remove('hidden')">Info Tim
+                            developer</button>
+                        <hr class="border-[#3f4248] my-1">
+                        <a href="https://github.com/ilyasmanaja" target="_blank" rel="noreferrer"
+                            class="block px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">✓ Link Github</a>
+                        <a href="#" target="_blank" rel="noreferrer"
+                            class="block px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">✓ Link Youtube</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Workspace (Side-by-Side Canvas + Control Drawer) -->
+    <main class="flex-1 flex overflow-hidden">
+        <!-- Canvas Viewports -->
+        <div class="flex-1 flex p-4 gap-4 bg-[#141517] overflow-auto">
+            <!-- Left: Original Image -->
+            <div class="flex-1 flex flex-col bg-[#1e1f22] rounded-lg border border-[#2b2d31] overflow-hidden">
+                <div
+                    class="bg-[#2b2d31] px-3 py-2 text-xs font-semibold tracking-wider text-gray-300 flex justify-between items-center border-b border-[#3f4248]">
+                    <span>ORIGINAL IMAGE</span>
+                    <span id="orig-res" class="text-gray-400 font-normal">Belum ada gambar</span>
+                </div>
+                <div class="flex-1 flex items-center justify-center p-4 relative" id="drop-area">
+                    <canvas id="canvas-orig" class="max-w-full max-h-full object-contain shadow-md hidden"></canvas>
+                    <div id="orig-placeholder" class="text-center text-gray-500">
+                        <p class="mb-2 text-sm">Tarik dan lepas gambar ke sini</p>
+                        <p class="text-xs">atau klik menu <strong>File → Open...</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Processed Image -->
+            <div class="flex-1 flex flex-col bg-[#1e1f22] rounded-lg border border-[#2b2d31] overflow-hidden">
+                <div
+                    class="bg-[#2b2d31] px-3 py-2 text-xs font-semibold tracking-wider text-gray-300 flex justify-between items-center border-b border-[#3f4248]">
+                    <span>PROCESSED IMAGE</span>
+                    <span id="proc-status" class="text-gray-400 font-normal">Menunggu operasi</span>
+                </div>
+                <div class="flex-1 flex items-center justify-center p-4">
+                    <canvas id="canvas-proc" class="max-w-full max-h-full object-contain shadow-md hidden"></canvas>
+                    <div id="proc-placeholder" class="text-center text-gray-500 text-xs">
+                        Hasil pemrosesan akan ditampilkan di sini
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Parameter Drawer -->
+        <aside class="w-80 bg-[#2b2d31] border-l border-[#3f4248] p-4 flex flex-col justify-between">
+            <div>
+                <h3 class="text-sm font-semibold border-b border-[#3f4248] pb-2 mb-4 text-gray-200">Panel Parameter</h3>
+                <div id="dynamic-params" class="text-xs text-gray-400 space-y-4">
+                    <p>Pilih operasi dari menu bar di atas untuk menampilkan kontrol pengaturan.</p>
+                </div>
+            </div>
+            <div class="border-t border-[#3f4248] pt-3 flex gap-2">
+                <button class="flex-1 bg-gray-600 hover:bg-gray-500 text-white text-xs font-medium py-2 rounded">Reset
+                    Param</button>
+                <button
+                    class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium py-2 rounded">Apply</button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Bottom Status Bar -->
+    <footer
+        class="bg-[#2b2d31] border-t border-[#3f4248] px-4 py-1.5 text-xs text-gray-400 flex items-center justify-between">
+        <div class="flex space-x-6">
+            <span>Resolusi: <strong id="status-dim" class="text-gray-200">-</strong></span>
+            <span>Mode: <strong id="status-mode" class="text-gray-200">-</strong></span>
+            <span>Kursor: <strong id="status-cursor" class="text-gray-200">X: - , Y: -</strong></span>
+            <span>Piksel: <strong id="status-pixel" class="text-gray-200">-</strong></span>
+        </div>
+        <div class="text-emerald-400 text-xs">● Siap</div>
+    </footer>
+
+    <!-- Modal About -->
+    <div id="modal-about"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50">
+        <div class="bg-[#2b2d31] border border-[#3f4248] rounded-xl w-full max-w-md p-6 shadow-2xl relative">
+            <h2 class="text-lg font-bold text-gray-100 mb-2">Info Tim Developer</h2>
+            <div class="text-xs space-y-2 text-gray-300">
+                <p><strong>Pengembang:</strong> Muhammad Raihan Ilyasman</p>
+                <p><strong>Peran:</strong> Solo Developer</p>
+                <p><strong>Mata Kuliah:</strong> Praktikum Pengolahan Citra Digital (PCD)</p>
+                <p><strong>Institusi:</strong> S1 Teknik Informatika — Universitas Riau</p>
+                <p class="pt-2 text-gray-400 border-t border-[#3f4248]">Aplikasi studio pengolahan citra digital
+                    berbasis Web Flask & modul fungsi NumPy/Pillow murni.</p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="document.getElementById('modal-about').classList.add('hidden')"
+                    class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-medium">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Minimal File Loader Preview -->
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const dropArea = document.getElementById('drop-area');
+        const canvasOrig = document.getElementById('canvas-orig');
+        const ctxOrig = canvasOrig.getContext('2d');
+        const placeholder = document.getElementById('orig-placeholder');
+        let isAnyMenuOpen = false;
+
+        // --- 1. LOGIKA FILE LOADER & DRAG-AND-DROP ---
+        function handleImageFile(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Silakan pilih file gambar yang valid (JPG, PNG, WEBP, BMP).');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = new Image();
+                img.onload = function () {
+                    canvasOrig.width = img.width;
+                    canvasOrig.height = img.height;
+                    ctxOrig.drawImage(img, 0, 0);
+
+                    canvasOrig.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+
+                    const resText = `${img.width} × ${img.height} px`;
+                    document.getElementById('orig-res').innerText = resText;
+                    document.getElementById('status-dim').innerText = resText;
+                    document.getElementById('status-mode').innerText = 'RGB';
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Input via dialog (File -> Open...)
+        fileInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            handleImageFile(file);
+        });
+
+        // Mencegah browser membuka file secara default saat di-drag
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+            document.body.addEventListener(eventName, function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        // Efek visual highlight border saat file berada di atas canvas
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => {
+                dropArea.classList.add('border-2', 'border-blue-500', 'border-dashed', 'bg-[#1e1f22]/50');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => {
+                dropArea.classList.remove('border-2', 'border-blue-500', 'border-dashed', 'bg-[#1e1f22]/50');
+            }, false);
+        });
+
+        // Event saat file dijatuhkan (Drop)
+        dropArea.addEventListener('drop', function (e) {
+            const dt = e.dataTransfer;
+            const file = dt.files[0];
+            handleImageFile(file);
+        }, false);
+
+
+        // --- 2. LOGIKA DESKTOP MENU & DROPDOWN ---
+        function closeAllMenus() {
+            document.querySelectorAll('.menu-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.submenu-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('bg-[#35373c]'));
+            isAnyMenuOpen = false;
+        }
+
+        // Toggle menu utama saat diklik
+        document.querySelectorAll('.menu-dropdown').forEach(dropdown => {
+            const btn = dropdown.querySelector('.menu-btn');
+            const content = dropdown.querySelector('.menu-content');
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const willOpen = content.classList.contains('hidden');
+                closeAllMenus();
+                if (willOpen) {
+                    content.classList.remove('hidden');
+                    btn.classList.add('bg-[#35373c]');
+                    isAnyMenuOpen = true;
+                }
+            });
+
+            // Geser mouse otomatis pindah menu bila salah satu menu sudah dibuka
+            dropdown.addEventListener('mouseenter', () => {
+                if (isAnyMenuOpen) {
+                    closeAllMenus();
+                    content.classList.remove('hidden');
+                    btn.classList.add('bg-[#35373c]');
+                    isAnyMenuOpen = true;
+                }
+            });
+        });
+
+        // Submenu bertingkat
+        document.querySelectorAll('.submenu-item').forEach(item => {
+            const subContent = item.querySelector('.submenu-content');
+            if (!subContent) return;
+
+            item.addEventListener('mouseenter', () => {
+                const siblings = item.parentElement.querySelectorAll(':scope > .submenu-item > .submenu-content');
+                siblings.forEach(s => s.classList.add('hidden'));
+                subContent.classList.remove('hidden');
+            });
+
+            item.addEventListener('mouseleave', () => {
+                subContent.classList.add('hidden');
+            });
+        });
+
+        // Tutup menu jika klik di luar area navbar
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-dropdown')) {
+                closeAllMenus();
+            }
+        });
+    </script>
+</body>
+
+</html>
