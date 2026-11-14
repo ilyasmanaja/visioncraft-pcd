@@ -55,6 +55,15 @@ from app.operations.noise.generators import (
     apply_uniform_noise,
     apply_impulse_noise,
 )
+from app.operations.edge.detectors import (
+    apply_sobel,
+    apply_prewitt,
+    apply_robert,
+    apply_laplacian,
+    apply_log,
+    apply_canny,
+    apply_compass,
+)
 
 api_bp = Blueprint("api", __name__, url_prefix="/api")
 
@@ -239,6 +248,25 @@ def process_image():
             )
         elif operation == "noise.impulse":
             result_img = apply_impulse_noise(img, prob=float(params.get("prob", 0.05)))
+        # 7. Routing Menu Edge Detection
+        elif operation == "edge.sobel":
+            result_img = apply_sobel(img)
+        elif operation == "edge.prewitt":
+            result_img = apply_prewitt(img)
+        elif operation == "edge.robert":
+            result_img = apply_robert(img)
+        elif operation == "edge.laplacian":
+            result_img = apply_laplacian(img)
+        elif operation == "edge.log":
+            result_img = apply_log(img)
+        elif operation == "edge.canny":
+            result_img = apply_canny(
+                img,
+                low_thresh=int(params.get("low_thresh", 50)),
+                high_thresh=int(params.get("high_thresh", 150)),
+            )
+        elif operation == "edge.compass":
+            result_img = apply_compass(img)
         else:
             return (
                 jsonify(

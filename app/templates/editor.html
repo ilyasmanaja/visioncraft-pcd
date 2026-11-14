@@ -293,12 +293,12 @@
                             </div>
                             <div class="submenu-content hidden absolute left-full top-0 pl-1 w-36">
                                 <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Sobel</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Prewitt</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Robert</button>
+                                    <button data-op="edge.sobel"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Sobel</button>
+                                    <button data-op="edge.prewitt"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Prewitt</button>
+                                    <button data-op="edge.robert"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Robert</button>
                                 </div>
                             </div>
                         </div>
@@ -311,19 +311,19 @@
                             </div>
                             <div class="submenu-content hidden absolute left-full top-0 pl-1 w-52">
                                 <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Laplacian</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Laplacian
+                                    <button data-op="edge.laplacian"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Laplacian</button>
+                                    <button data-op="edge.log"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Laplacian
                                         of Gaussian (LoG)</button>
-                                    <button
-                                        class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Canny</button>
+                                    <button data-op="edge.canny"
+                                        class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Canny</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Compass</button>
+                        <button data-op="edge.compass"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Compass</button>
                     </div>
                 </div>
             </div>
@@ -628,6 +628,19 @@
                                 class="w-full cursor-pointer accent-blue-500">
                         </div>
                     </div>
+
+                    <!-- Kontrol Khusus Edge Detection (Canny) -->
+                    <div id="param-edge-box" class="hidden flex flex-col gap-3">
+                        <label class="text-gray-300">Low Threshold: <span id="label-edge-low"
+                                class="text-blue-400 font-bold">50</span></label>
+                        <input type="range" id="param-edge-low" min="5" max="200" value="50" step="5"
+                            class="w-full cursor-pointer accent-blue-500">
+
+                        <label class="text-gray-300">High Threshold: <span id="label-edge-high"
+                                class="text-blue-400 font-bold">150</span></label>
+                        <input type="range" id="param-edge-high" min="20" max="255" value="150" step="5"
+                            class="w-full cursor-pointer accent-blue-500">
+                    </div>
                 </div>
             </div>
 
@@ -731,6 +744,9 @@
         bindSliderText('param-noise-uni-low', 'label-noise-uni-low');
         bindSliderText('param-noise-uni-high', 'label-noise-uni-high');
         bindSliderText('param-noise-prob', 'label-noise-prob');
+        const paramEdgeBox = document.getElementById('param-edge-box');
+        bindSliderText('param-edge-low', 'label-edge-low');
+        bindSliderText('param-edge-high', 'label-edge-high');
 
         // --- 1. LOGIKA FILE LOADER & DRAG-AND-DROP ---
         function handleImageFile(file) {
@@ -1000,6 +1016,15 @@
                     if (op === 'noise.impulse') document.getElementById('noise-ctrl-impulse').classList.remove('hidden');
                     triggerCurrentOp();
                 }
+                else if (op.startsWith('edge.')) {
+                    if (op === 'edge.canny') {
+                        paramEdgeBox.classList.remove('hidden');
+                    } else {
+                        paramEmpty.classList.remove('hidden');
+                        paramEmpty.innerText = `Operasi aktif: ${btn.innerText.trim()}`;
+                    }
+                    triggerCurrentOp();
+                }
                 else {
                     paramEmpty.classList.remove('hidden');
                     paramEmpty.innerText = `Operasi aktif: ${btn.innerText.trim()}`;
@@ -1060,6 +1085,13 @@
             }
             else if (activeOp.startsWith('noise.')) {
                 executeOperation(activeOp, getNoiseParams());
+            }
+            else if (activeOp.startsWith('edge.')) {
+                const edgeParams = activeOp === 'edge.canny' ? {
+                    low_thresh: parseInt(document.getElementById('param-edge-low').value) || 50,
+                    high_thresh: parseInt(document.getElementById('param-edge-high').value) || 150
+                } : {};
+                executeOperation(activeOp, edgeParams);
             }
             else {
                 executeOperation(activeOp);
@@ -1127,6 +1159,7 @@
             if (paramConvBox) paramConvBox.classList.add('hidden');
             if (paramEnhBox) paramEnhBox.classList.add('hidden');
             if (paramNoiseBox) paramNoiseBox.classList.add('hidden');
+            if (paramEdgeBox) paramEdgeBox.classList.add('hidden');
             document.querySelectorAll('.geom-subctrl').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.enh-subctrl').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.noise-subctrl').forEach(el => el.classList.add('hidden'));
