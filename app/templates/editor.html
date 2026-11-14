@@ -171,11 +171,12 @@
                     class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">Enhancement</button>
                 <div class="menu-content hidden absolute left-0 top-full pt-1 w-56 shadow-2xl">
                     <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Brightness</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Contrast</button>
-                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Hist.
+                        <button data-op="enhancement.brightness"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Brightness</button>
+                        <button data-op="enhancement.contrast"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Contrast</button>
+                        <button data-op="enhancement.hist_eq"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Hist.
                             Equalization</button>
 
                         <!-- Submenu: Smoothing (3 Levels) -->
@@ -195,11 +196,11 @@
                                         <div class="submenu-content hidden absolute left-full top-0 pl-1 w-44">
                                             <div
                                                 class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Lowpass
+                                                <button data-op="enhancement.smoothing.lowpass"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Lowpass
                                                     Filtering</button>
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Median
+                                                <button data-op="enhancement.smoothing.median"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Median
                                                     Filtering</button>
                                             </div>
                                         </div>
@@ -213,10 +214,10 @@
                                         <div class="submenu-content hidden absolute left-full top-0 pl-1 w-36">
                                             <div
                                                 class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">ILPF</button>
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">BLPF</button>
+                                                <button data-op="enhancement.smoothing.ilpf"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">ILPF</button>
+                                                <button data-op="enhancement.smoothing.blpf"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">BLPF</button>
                                             </div>
                                         </div>
                                     </div>
@@ -241,11 +242,11 @@
                                         <div class="submenu-content hidden absolute left-full top-0 pl-1 w-48">
                                             <div
                                                 class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Highpass
+                                                <button data-op="enhancement.sharpening.highpass"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Highpass
                                                     Filtering</button>
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Highboost
+                                                <button data-op="enhancement.sharpening.highboost"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Highboost
                                                     Filtering</button>
                                             </div>
                                         </div>
@@ -259,10 +260,10 @@
                                         <div class="submenu-content hidden absolute left-full top-0 pl-1 w-36">
                                             <div
                                                 class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 shadow-2xl">
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">IHPF</button>
-                                                <button
-                                                    class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">BHPF</button>
+                                                <button data-op="enhancement.sharpening.ihpf"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">IHPF</button>
+                                                <button data-op="enhancement.sharpening.bhpf"
+                                                    class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">BHPF</button>
                                             </div>
                                         </div>
                                     </div>
@@ -270,8 +271,8 @@
                             </div>
                         </div>
 
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Geometrics
+                        <button data-op="enhancement.geom_correction"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Geometrics
                             correction</button>
                     </div>
                 </div>
@@ -502,6 +503,72 @@
                             <option value="identity">Identity (Asli)</option>
                         </select>
                     </div>
+
+                    <!-- Kontrol Khusus Enhancement -->
+                    <div id="param-enh-box" class="hidden flex flex-col gap-3">
+                        <!-- Brightness -->
+                        <div id="enh-ctrl-brightness" class="enh-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Brightness Offset: <span id="label-enh-bright"
+                                    class="text-blue-400 font-bold">30</span></label>
+                            <input type="range" id="param-enh-bright" min="-150" max="150" value="30"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Contrast -->
+                        <div id="enh-ctrl-contrast" class="enh-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Faktor Kontras: <span id="label-enh-contrast"
+                                    class="text-blue-400 font-bold">1.5x</span></label>
+                            <input type="range" id="param-enh-contrast" min="0.2" max="3.0" value="1.5" step="0.1"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Median Kernel Size -->
+                        <div id="enh-ctrl-median" class="enh-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Ukuran Kernel Median:</label>
+                            <select id="param-enh-median-k"
+                                class="bg-[#1e1f22] border border-[#3f4248] rounded px-2 py-1 text-gray-200 focus:outline-none focus:border-blue-500">
+                                <option value="3">3 × 3</option>
+                                <option value="5">5 × 5</option>
+                                <option value="7">7 × 7</option>
+                            </select>
+                        </div>
+
+                        <!-- Highboost Factor -->
+                        <div id="enh-ctrl-highboost" class="enh-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Amplification (A): <span id="label-enh-hb"
+                                    class="text-blue-400 font-bold">1.5</span></label>
+                            <input type="range" id="param-enh-hb" min="1.0" max="4.0" value="1.5" step="0.1"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Frequency Cutoff & Order (ILPF, BLPF, IHPF, BHPF) -->
+                        <div id="enh-ctrl-freq" class="enh-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Frekuensi Cutoff (D0): <span id="label-enh-d0"
+                                    class="text-blue-400 font-bold">40</span></label>
+                            <input type="range" id="param-enh-d0" min="5" max="150" value="40" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+
+                            <div id="enh-order-wrap" class="hidden flex flex-col gap-1 mt-2">
+                                <label class="text-gray-300">Order Butterworth (n): <span id="label-enh-order"
+                                        class="text-blue-400 font-bold">2</span></label>
+                                <input type="range" id="param-enh-order" min="1" max="6" value="2" step="1"
+                                    class="w-full cursor-pointer accent-blue-500">
+                            </div>
+                        </div>
+
+                        <!-- Geometrics Correction (Skew X & Y) -->
+                        <div id="enh-ctrl-geomcorr" class="enh-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Koreksi Skew Horizontal (X): <span id="label-enh-skewx"
+                                    class="text-blue-400 font-bold">0.15</span></label>
+                            <input type="range" id="param-enh-skewx" min="-0.5" max="0.5" value="0.15" step="0.05"
+                                class="w-full cursor-pointer accent-blue-500">
+
+                            <label class="text-gray-300">Koreksi Skew Vertikal (Y): <span id="label-enh-skewy"
+                                    class="text-blue-400 font-bold">0</span></label>
+                            <input type="range" id="param-enh-skewy" min="-0.5" max="0.5" value="0" step="0.05"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -551,7 +618,7 @@
     <script>
         const fileInput = document.getElementById('file-input');
         const canvasProc = document.getElementById('canvas-proc');
-        const ctxProc = canvasProc.getContext('2d'); // <-- TAMBAHKAN BARIS INI
+        const ctxProc = canvasProc.getContext('2d');
         const procPlaceholder = document.getElementById('proc-placeholder');
         const procStatus = document.getElementById('proc-status');
         const dropArea = document.getElementById('drop-area');
@@ -560,6 +627,7 @@
         const placeholder = document.getElementById('orig-placeholder');
         let isAnyMenuOpen = false;
         let activeOp = null;
+
         const paramEmpty = document.getElementById('param-empty');
         const paramThreshBox = document.getElementById('param-threshold-box');
         const threshSlider = document.getElementById('thresh-slider');
@@ -574,8 +642,9 @@
         let image2Base64 = null;
         const paramConvBox = document.getElementById('param-conv-box');
         const convKernelSelect = document.getElementById('param-conv-kernel');
+        const paramEnhBox = document.getElementById('param-enh-box');
 
-        // Helper update teks slider geometris
+        // Helper update teks slider
         const bindSliderText = (sliderId, labelId, suffix = '') => {
             const sl = document.getElementById(sliderId);
             const lb = document.getElementById(labelId);
@@ -587,6 +656,13 @@
         bindSliderText('param-ty', 'label-ty');
         bindSliderText('param-rot', 'label-rot');
         bindSliderText('param-zoom', 'label-zoom', 'x');
+        bindSliderText('param-enh-bright', 'label-enh-bright');
+        bindSliderText('param-enh-contrast', 'label-enh-contrast', 'x');
+        bindSliderText('param-enh-hb', 'label-enh-hb');
+        bindSliderText('param-enh-d0', 'label-enh-d0');
+        bindSliderText('param-enh-order', 'label-enh-order');
+        bindSliderText('param-enh-skewx', 'label-enh-skewx');
+        bindSliderText('param-enh-skewy', 'label-enh-skewy');
 
         // --- 1. LOGIKA FILE LOADER & DRAG-AND-DROP ---
         function handleImageFile(file) {
@@ -630,13 +706,11 @@
             });
         }
 
-        // Input via dialog (File -> Open...)
         fileInput.addEventListener('change', function (e) {
             const file = e.target.files[0];
             handleImageFile(file);
         });
 
-        // Mencegah browser membuka file secara default saat di-drag
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropArea.addEventListener(eventName, function (e) {
                 e.preventDefault();
@@ -648,7 +722,6 @@
             }, false);
         });
 
-        // Efek visual highlight border saat file berada di atas canvas
         ['dragenter', 'dragover'].forEach(eventName => {
             dropArea.addEventListener(eventName, () => {
                 dropArea.classList.add('border-2', 'border-blue-500', 'border-dashed', 'bg-[#1e1f22]/50');
@@ -661,13 +734,11 @@
             }, false);
         });
 
-        // Event saat file dijatuhkan (Drop)
         dropArea.addEventListener('drop', function (e) {
             const dt = e.dataTransfer;
             const file = dt.files[0];
             handleImageFile(file);
         }, false);
-
 
         // --- 2. LOGIKA DESKTOP MENU & DROPDOWN ---
         function closeAllMenus() {
@@ -677,7 +748,6 @@
             isAnyMenuOpen = false;
         }
 
-        // Toggle menu utama saat diklik
         document.querySelectorAll('.menu-dropdown').forEach(dropdown => {
             const btn = dropdown.querySelector('.menu-btn');
             const content = dropdown.querySelector('.menu-content');
@@ -693,7 +763,6 @@
                 }
             });
 
-            // Geser mouse otomatis pindah menu bila salah satu menu sudah dibuka
             dropdown.addEventListener('mouseenter', () => {
                 if (isAnyMenuOpen) {
                     closeAllMenus();
@@ -704,7 +773,6 @@
             });
         });
 
-        // Submenu bertingkat
         document.querySelectorAll('.submenu-item').forEach(item => {
             const subContent = item.querySelector('.submenu-content');
             if (!subContent) return;
@@ -720,13 +788,13 @@
             });
         });
 
-        // Tutup menu jika klik di luar area navbar
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.menu-dropdown')) {
                 closeAllMenus();
             }
         });
 
+        // --- 3. EKSEKUSI API & PARAMETER ---
         async function executeOperation(operationName, params = {}, img2Data = null) {
             if (canvasOrig.classList.contains('hidden')) {
                 alert('Silakan muat gambar terlebih dahulu melalui menu File -> Open atau drag-and-drop!');
@@ -776,14 +844,12 @@
             }
         }
 
-        // Update teks angka saat slider digeser
         if (threshSlider) {
             threshSlider.addEventListener('input', (e) => {
                 threshValLabel.innerText = e.target.value;
             });
         }
 
-        // Reset slider
         if (btnResetParam) {
             btnResetParam.addEventListener('click', () => {
                 if (threshSlider) {
@@ -793,14 +859,12 @@
             });
         }
 
-        // Definisi operasi yang membutuhkan 2 gambar
         const isDualImageOp = (op) => {
             if (!op) return false;
             return op.startsWith('basic.arithmetic.') ||
                 ['basic.boolean.and', 'basic.boolean.or', 'basic.boolean.xor'].includes(op);
         };
 
-        // Listener dinamis untuk seluruh tombol operasi yang memiliki class 'op-btn'
         document.querySelectorAll('.op-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const op = btn.getAttribute('data-op');
@@ -835,6 +899,30 @@
                     paramConvBox.classList.remove('hidden');
                     executeOperation(op, { kernel: convKernelSelect.value });
                 }
+                else if (op.startsWith('enhancement.')) {
+                    const instantOps = ['enhancement.hist_eq', 'enhancement.smoothing.lowpass', 'enhancement.sharpening.highpass'];
+                    if (instantOps.includes(op)) {
+                        paramEmpty.classList.remove('hidden');
+                        paramEmpty.innerText = `Operasi aktif: ${btn.innerText.trim()}`;
+                    } else {
+                        paramEnhBox.classList.remove('hidden');
+                        if (op === 'enhancement.brightness') document.getElementById('enh-ctrl-brightness').classList.remove('hidden');
+                        if (op === 'enhancement.contrast') document.getElementById('enh-ctrl-contrast').classList.remove('hidden');
+                        if (op === 'enhancement.smoothing.median') document.getElementById('enh-ctrl-median').classList.remove('hidden');
+                        if (op === 'enhancement.sharpening.highboost') document.getElementById('enh-ctrl-highboost').classList.remove('hidden');
+                        if (op === 'enhancement.geom_correction') document.getElementById('enh-ctrl-geomcorr').classList.remove('hidden');
+                        if (['enhancement.smoothing.ilpf', 'enhancement.smoothing.blpf', 'enhancement.sharpening.ihpf', 'enhancement.sharpening.bhpf'].includes(op)) {
+                            document.getElementById('enh-ctrl-freq').classList.remove('hidden');
+                            const orderWrap = document.getElementById('enh-order-wrap');
+                            if (op.endsWith('blpf') || op.endsWith('bhpf')) {
+                                orderWrap.classList.remove('hidden');
+                            } else {
+                                orderWrap.classList.add('hidden');
+                            }
+                        }
+                    }
+                    triggerCurrentOp();
+                }
                 else {
                     paramEmpty.classList.remove('hidden');
                     paramEmpty.innerText = `Operasi aktif: ${btn.innerText.trim()}`;
@@ -842,6 +930,31 @@
                 }
             });
         });
+
+        function getEnhParams() {
+            if (activeOp === 'enhancement.brightness') {
+                return { value: parseInt(document.getElementById('param-enh-bright').value) || 0 };
+            } else if (activeOp === 'enhancement.contrast') {
+                return { factor: parseFloat(document.getElementById('param-enh-contrast').value) || 1.0 };
+            } else if (activeOp === 'enhancement.smoothing.median') {
+                return { ksize: parseInt(document.getElementById('param-enh-median-k').value) || 3 };
+            } else if (activeOp === 'enhancement.sharpening.highboost') {
+                return { boost_a: parseFloat(document.getElementById('param-enh-hb').value) || 1.5 };
+            } else if (['enhancement.smoothing.ilpf', 'enhancement.sharpening.ihpf'].includes(activeOp)) {
+                return { cutoff: parseFloat(document.getElementById('param-enh-d0').value) || 40 };
+            } else if (['enhancement.smoothing.blpf', 'enhancement.sharpening.bhpf'].includes(activeOp)) {
+                return {
+                    cutoff: parseFloat(document.getElementById('param-enh-d0').value) || 40,
+                    order: parseInt(document.getElementById('param-enh-order').value) || 2
+                };
+            } else if (activeOp === 'enhancement.geom_correction') {
+                return {
+                    skew_x: parseFloat(document.getElementById('param-enh-skewx').value) || 0,
+                    skew_y: parseFloat(document.getElementById('param-enh-skewy').value) || 0
+                };
+            }
+            return {};
+        }
 
         function triggerCurrentOp() {
             if (!activeOp) return;
@@ -865,6 +978,9 @@
             else if (activeOp === 'basic.convolution') {
                 executeOperation(activeOp, { kernel: convKernelSelect.value });
             }
+            else if (activeOp.startsWith('enhancement.')) {
+                executeOperation(activeOp, getEnhParams());
+            }
             else {
                 executeOperation(activeOp);
             }
@@ -872,7 +988,7 @@
 
         if (btnApply) {
             btnApply.addEventListener('click', (e) => {
-                e.preventDefault(); // Mencegah reload atau propagasi form tak sengaja
+                e.preventDefault();
                 triggerCurrentOp();
             });
         }
@@ -905,9 +1021,10 @@
             if (paramGeomBox) paramGeomBox.classList.add('hidden');
             if (paramDualBox) paramDualBox.classList.add('hidden');
             if (paramConvBox) paramConvBox.classList.add('hidden');
+            if (paramEnhBox) paramEnhBox.classList.add('hidden');
             document.querySelectorAll('.geom-subctrl').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.enh-subctrl').forEach(el => el.classList.add('hidden'));
         }
-
     </script>
 </body>
 
