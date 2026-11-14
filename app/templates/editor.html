@@ -334,22 +334,23 @@
                     class="menu-btn px-3 py-1 rounded hover:bg-[#35373c] focus:outline-none transition">Noise</button>
                 <div class="menu-content hidden absolute left-0 top-full pt-1 w-48 shadow-2xl">
                     <div class="bg-[#2b2d31] border border-[#3f4248] rounded-md py-1 text-xs">
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Gaussian
+                        <button data-op="noise.gaussian"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Gaussian
                             Noise</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Rayleigh
+                        <button data-op="noise.rayleigh"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Rayleigh
                             Noise</button>
-                        <button class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Erlang
+                        <button data-op="noise.erlang"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Erlang
                             (Gamma) Noise</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Exponential
+                        <button data-op="noise.exponential"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Exponential
                             Noise</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Uniform
+                        <button data-op="noise.uniform"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Uniform
                             Noise</button>
-                        <button
-                            class="w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Impulse
+                        <button data-op="noise.impulse"
+                            class="op-btn w-full text-left px-4 py-2 hover:bg-[#3b82f6] hover:text-white transition">Impulse
                             Noise</button>
                     </div>
                 </div>
@@ -569,6 +570,64 @@
                                 class="w-full cursor-pointer accent-blue-500">
                         </div>
                     </div>
+
+                    <!-- Kontrol Khusus Noise -->
+                    <div id="param-noise-box" class="hidden flex flex-col gap-3">
+                        <!-- Gaussian -->
+                        <div id="noise-ctrl-gaussian" class="noise-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Mean (μ): <span id="label-noise-mean"
+                                    class="text-blue-400 font-bold">0</span></label>
+                            <input type="range" id="param-noise-mean" min="-100" max="100" value="0" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+
+                            <label class="text-gray-300">Standar Deviasi (σ): <span id="label-noise-sigma"
+                                    class="text-blue-400 font-bold">25</span></label>
+                            <input type="range" id="param-noise-sigma" min="5" max="100" value="25" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Rayleigh & Exponential Scale -->
+                        <div id="noise-ctrl-scale" class="noise-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Intensitas Scale: <span id="label-noise-scale"
+                                    class="text-blue-400 font-bold">30</span></label>
+                            <input type="range" id="param-noise-scale" min="5" max="100" value="30" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Erlang (Gamma) -->
+                        <div id="noise-ctrl-erlang" class="noise-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Scale Parameter: <span id="label-noise-erl-scale"
+                                    class="text-blue-400 font-bold">15</span></label>
+                            <input type="range" id="param-noise-erl-scale" min="5" max="60" value="15" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+
+                            <label class="text-gray-300">Shape Order (k): <span id="label-noise-erl-k"
+                                    class="text-blue-400 font-bold">2</span></label>
+                            <input type="range" id="param-noise-erl-k" min="1" max="8" value="2" step="1"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Uniform -->
+                        <div id="noise-ctrl-uniform" class="noise-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Batas Bawah (Low): <span id="label-noise-uni-low"
+                                    class="text-blue-400 font-bold">-40</span></label>
+                            <input type="range" id="param-noise-uni-low" min="-150" max="0" value="-40" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+
+                            <label class="text-gray-300">Batas Atas (High): <span id="label-noise-uni-high"
+                                    class="text-blue-400 font-bold">40</span></label>
+                            <input type="range" id="param-noise-uni-high" min="0" max="150" value="40" step="5"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+
+                        <!-- Impulse (Salt & Pepper) -->
+                        <div id="noise-ctrl-impulse" class="noise-subctrl hidden flex flex-col gap-2">
+                            <label class="text-gray-300">Probabilitas Derau: <span id="label-noise-prob"
+                                    class="text-blue-400 font-bold">0.05</span></label>
+                            <input type="range" id="param-noise-prob" min="0.01" max="0.50" value="0.05" step="0.01"
+                                class="w-full cursor-pointer accent-blue-500">
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -643,6 +702,7 @@
         const paramConvBox = document.getElementById('param-conv-box');
         const convKernelSelect = document.getElementById('param-conv-kernel');
         const paramEnhBox = document.getElementById('param-enh-box');
+        const paramNoiseBox = document.getElementById('param-noise-box');
 
         // Helper update teks slider
         const bindSliderText = (sliderId, labelId, suffix = '') => {
@@ -663,6 +723,14 @@
         bindSliderText('param-enh-order', 'label-enh-order');
         bindSliderText('param-enh-skewx', 'label-enh-skewx');
         bindSliderText('param-enh-skewy', 'label-enh-skewy');
+        bindSliderText('param-noise-mean', 'label-noise-mean');
+        bindSliderText('param-noise-sigma', 'label-noise-sigma');
+        bindSliderText('param-noise-scale', 'label-noise-scale');
+        bindSliderText('param-noise-erl-scale', 'label-noise-erl-scale');
+        bindSliderText('param-noise-erl-k', 'label-noise-erl-k');
+        bindSliderText('param-noise-uni-low', 'label-noise-uni-low');
+        bindSliderText('param-noise-uni-high', 'label-noise-uni-high');
+        bindSliderText('param-noise-prob', 'label-noise-prob');
 
         // --- 1. LOGIKA FILE LOADER & DRAG-AND-DROP ---
         function handleImageFile(file) {
@@ -923,6 +991,15 @@
                     }
                     triggerCurrentOp();
                 }
+                else if (op.startsWith('noise.')) {
+                    paramNoiseBox.classList.remove('hidden');
+                    if (op === 'noise.gaussian') document.getElementById('noise-ctrl-gaussian').classList.remove('hidden');
+                    if (op === 'noise.rayleigh' || op === 'noise.exponential') document.getElementById('noise-ctrl-scale').classList.remove('hidden');
+                    if (op === 'noise.erlang') document.getElementById('noise-ctrl-erlang').classList.remove('hidden');
+                    if (op === 'noise.uniform') document.getElementById('noise-ctrl-uniform').classList.remove('hidden');
+                    if (op === 'noise.impulse') document.getElementById('noise-ctrl-impulse').classList.remove('hidden');
+                    triggerCurrentOp();
+                }
                 else {
                     paramEmpty.classList.remove('hidden');
                     paramEmpty.innerText = `Operasi aktif: ${btn.innerText.trim()}`;
@@ -981,9 +1058,36 @@
             else if (activeOp.startsWith('enhancement.')) {
                 executeOperation(activeOp, getEnhParams());
             }
+            else if (activeOp.startsWith('noise.')) {
+                executeOperation(activeOp, getNoiseParams());
+            }
             else {
                 executeOperation(activeOp);
             }
+        }
+
+        function getNoiseParams() {
+            if (activeOp === 'noise.gaussian') {
+                return {
+                    mean: parseFloat(document.getElementById('param-noise-mean').value) || 0,
+                    sigma: parseFloat(document.getElementById('param-noise-sigma').value) || 25
+                };
+            } else if (activeOp === 'noise.rayleigh' || activeOp === 'noise.exponential') {
+                return { scale: parseFloat(document.getElementById('param-noise-scale').value) || 30 };
+            } else if (activeOp === 'noise.erlang') {
+                return {
+                    scale: parseFloat(document.getElementById('param-noise-erl-scale').value) || 15,
+                    shape_k: parseInt(document.getElementById('param-noise-erl-k').value) || 2
+                };
+            } else if (activeOp === 'noise.uniform') {
+                return {
+                    low: parseFloat(document.getElementById('param-noise-uni-low').value) || -40,
+                    high: parseFloat(document.getElementById('param-noise-uni-high').value) || 40
+                };
+            } else if (activeOp === 'noise.impulse') {
+                return { prob: parseFloat(document.getElementById('param-noise-prob').value) || 0.05 };
+            }
+            return {};
         }
 
         if (btnApply) {
@@ -1022,8 +1126,10 @@
             if (paramDualBox) paramDualBox.classList.add('hidden');
             if (paramConvBox) paramConvBox.classList.add('hidden');
             if (paramEnhBox) paramEnhBox.classList.add('hidden');
+            if (paramNoiseBox) paramNoiseBox.classList.add('hidden');
             document.querySelectorAll('.geom-subctrl').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.enh-subctrl').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.noise-subctrl').forEach(el => el.classList.add('hidden'));
         }
     </script>
 </body>

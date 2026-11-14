@@ -47,6 +47,14 @@ from app.operations.enhancement.frequency_filters import (
     apply_bhpf,
 )
 from app.operations.enhancement.geometric_correction import apply_geometric_correction
+from app.operations.noise.generators import (
+    apply_gaussian_noise,
+    apply_rayleigh_noise,
+    apply_erlang_noise,
+    apply_exponential_noise,
+    apply_uniform_noise,
+    apply_impulse_noise,
+)
 
 api_bp = Blueprint("api", __name__, url_prefix="/api")
 
@@ -201,6 +209,36 @@ def process_image():
                 skew_x=float(params.get("skew_x", 0.15)),
                 skew_y=float(params.get("skew_y", 0.0)),
             )
+
+        # 6. Routing Menu Noise
+        elif operation == "noise.gaussian":
+            result_img = apply_gaussian_noise(
+                img,
+                mean=float(params.get("mean", 0.0)),
+                sigma=float(params.get("sigma", 25.0)),
+            )
+        elif operation == "noise.rayleigh":
+            result_img = apply_rayleigh_noise(
+                img, scale=float(params.get("scale", 30.0))
+            )
+        elif operation == "noise.erlang":
+            result_img = apply_erlang_noise(
+                img,
+                scale=float(params.get("scale", 15.0)),
+                shape_k=int(params.get("shape_k", 2)),
+            )
+        elif operation == "noise.exponential":
+            result_img = apply_exponential_noise(
+                img, scale=float(params.get("scale", 25.0))
+            )
+        elif operation == "noise.uniform":
+            result_img = apply_uniform_noise(
+                img,
+                low=float(params.get("low", -40.0)),
+                high=float(params.get("high", 40.0)),
+            )
+        elif operation == "noise.impulse":
+            result_img = apply_impulse_noise(img, prob=float(params.get("prob", 0.05)))
         else:
             return (
                 jsonify(
